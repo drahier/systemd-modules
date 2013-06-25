@@ -1,0 +1,4 @@
+MUSIC=path to music files
+BACKUP=path to backup storage
+SERVER=(optional) ssh server for backups
+USER=(optional) ssh user for backup via ssh

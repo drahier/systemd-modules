@@ -1,0 +1,9 @@
+[Unit]
+Description=Backup music triggered by mpd update
+After=mpd.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/musicbackup
+Type=oneshot
+ExecStart=/bin/bash /usr/lib/systemd/scripts/rsync $MUSIC $BACKUP $SERVER $USER
+RemainAfterExit=no

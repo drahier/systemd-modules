@@ -1,0 +1,9 @@
+[Unit]
+Description=Backup music
+
+[Path]
+PathModified=/var/lib/mpd/mpd.db
+Unit=musicbackup.service
+
+[Install]
+WantedBy=multi-user.target

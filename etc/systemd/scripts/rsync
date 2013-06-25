@@ -1,0 +1,24 @@
+#!/bin/bash
+BACKUP_FROM=$1
+BACKUP_TO=$2
+SERVER=$3
+USER=$4
+
+# if parameter server is empty, only rsync to local directory
+if [ -z "$SERVER" ]; then
+    rsync -aAX --delete $BACKUP_FROM $BACKUP_TO
+    exit 0
+fi
+
+# otherwise check if server is online
+while :; do
+    ping -c 1 $SERVER > /dev/null 2>&1
+    if [ $? = 0 ]; then
+        rsync -aAX --delete -e "ssh -i /home/$USER/.ssh/id_ecdsa" \
+            $BACKUP_FROM $USER@$SERVER:$BACKUP_TO
+        break
+    else
+        # check for server again, after a while
+        sleep 60m
+    fi
+done
