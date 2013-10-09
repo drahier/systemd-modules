@@ -3,6 +3,17 @@ systemd-modules
 
 Some systemd service, unit and script files.
 
+suspend@
+--------
+
+Automatically locks screen using i3lock when system is suspending.
+Taken from: https://wiki.archlinux.org/index.php/I3#Systemd_unit_file
+
+Files needed:
+
+- etc/systemd/system/suspend@.service
+
+
 kill-ssh-sessions
 -----------------
 
